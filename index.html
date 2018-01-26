@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue-cli-vux</title>
+  </head>
+  <script type="text/javascript">
+  	init(window,750,100)
+  	function init (win, screenWith, remUnit) {
+		var docEl = document.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = docEl.clientWidth;
+				if(!clientWidth) return;
+				if(clientWidth >= screenWith) {
+					docEl.style.fontSize = remUnit + 'px';
+				} else {
+					docEl.style.fontSize = remUnit * (clientWidth / screenWith) + 'px';
+				}
+		};
+		if(!document.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		document.addEventListener('DOMContentLoaded', recalc, false);
+	}
+  </script>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
